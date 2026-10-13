@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name>Rigu - Full Product Option Values</name>
+  <code>rigu_full_option_values</code>
+  <version>1.0.0</version>
+  <author>Rigu</author>
+  <link>https://rigu.co.uk</link>
+
+  <!-- Shopping cart -->
+  <file path="catalog/controller/checkout/cart.php">
+    <operation error="skip">
+      <search><![CDATA[
+'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+      ]]></search>
+      <add position="replace"><![CDATA[
+'value' => $value
+      ]]></add>
+    </operation>
+  </file>
+
+  <!-- Standard OpenCart checkout confirmation -->
+  <file path="catalog/controller/checkout/confirm.php">
+    <operation error="skip">
+      <search><![CDATA[
+'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+      ]]></search>
+      <add position="replace"><![CDATA[
+'value' => $value
+      ]]></add>
+    </operation>
+  </file>
+
+  <!-- Customer and admin order emails -->
+  <file path="catalog/controller/mail/order.php">
+    <operation error="skip">
+      <search><![CDATA[
+'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+      ]]></search>
+      <add position="replace"><![CDATA[
+'value' => $value
+      ]]></add>
+    </operation>
+  </file>
+
+  <!-- Journal 3 checkout (optional) -->
+  <file path="catalog/controller/journal3/checkout.php">
+    <operation error="skip">
+      <search><![CDATA[
+'value' => (\Journal3\Utils\Str::utf8_strlen($value) > 20 ? \Journal3\Utils\Str::utf8_substr($value, 0, 20) . '..' : $value),
+      ]]></search>
+      <add position="replace"><![CDATA[
+'value' => $value,
+      ]]></add>
+    </operation>
+  </file>
+</modification>
